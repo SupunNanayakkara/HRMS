@@ -9,41 +9,51 @@
 <html>
 <head>
     <title>System Login</title>
-    <link rel="stylesheet" type="text/css" href="style/test.css">
+    <link rel="stylesheet" type="text/css" href="style/login.css">
 </head>
 <body>
-
-    <img class="wave" src="img/3.jpg">
-
+<img class="wave" src="img/3.jpg">
 <div class="container">
     <div class="login-content">
         <form action="login" method="post">
+                <%
+                String result= (String) request.getAttribute("login");;%>
             <img src="img/avatar.svg">
-            <h2 class="title">Welcome</h2>
-            <h4 class="title">Human Resource Management System</h4>
-            <br>
+            <h2 class="title">Human Resource Management System</h2>
+
             <div class="input-div one">
                 <div class="i">
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="div">
-                    <h5>NIC</h5>
-                    <input type="text" class="input" id="NIC" name="NIC">
+                    <h5> Username</h5>
+                    <input type="text" class="input" id="un" name="un" >
                 </div>
             </div>
             <div class="input-div pass">
                 <div class="i">
-                    <i class="fas fa-lock"></i>
+
                 </div>
                 <div class="div">
-                    <h5>Password</h5>
+                    <h5> Password</h5>
                     <input type="password" class="input" id="pass" name="pass">
                 </div>
             </div>
+            <%
+                if(result=="UnSuccessful"){%>
+            <h5 class="response" style="color: crimson; transition: 600ms">
+                Login UnSuccessful! Try Again!
+            </h5><%
+            }else{%>
+            <br>
+            <br>
+            <% }
+            request.setAttribute("UnSuccessful",null);
+        %>
             <input type="submit" class="btn" value="Login">
         </form>
     </div>
 </div>
-    <script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
